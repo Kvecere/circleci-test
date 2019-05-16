@@ -1,0 +1,13 @@
+{
+  "name": "node-circle",
+  "version": "0.0.0",
+  "description": "hello world",
+  "main": "index.js",
+  "repository": "https://github.com/Kvecere/circleci-test",
+  "author": "Kyle",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "node index.js"
+  }
+}
