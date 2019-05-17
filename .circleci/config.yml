@@ -21,7 +21,7 @@ jobs:
           docker login -u $DOCKER_USER -p $DOCKER_PASS
           docker build -t=docker-test .
       - run: |
-          docker run -d --docker-test
+          docker run -d docker-test
           docker push docker-test
   # push-image:
     # docker:
