@@ -10,13 +10,13 @@ jobs:
           root: .
           paths:
             - ./*
-  push_image:
+  push-image:
     docker:
       - image: circleci/node
     steps:
       - attach_workspace:
         at: .
-      - setup_remote_docker
+      # - setup_remote_docker
       # - run: |
       #     docker login -u $DOCKER_USER -p $DOCKER_PASS
       #     docker build -tag=docker-test .
