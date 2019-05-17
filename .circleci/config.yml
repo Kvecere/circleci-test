@@ -19,10 +19,9 @@ jobs:
           at: .
       - run: |
           docker login -u $DOCKER_USER -p $DOCKER_PASS
-          docker build -t=docker-test .
+          docker build -t=docker-test . -t kdvecere/test
       - run: |
-          docker run -d docker-test
-          docker tag docker-test registry-1.docker.io/kdvecere/test
+          docker run -d docker-test    
           docker push kdvecere/test:docker-test
   # push-image:
     # docker:
