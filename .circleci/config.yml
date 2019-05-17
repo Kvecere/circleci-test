@@ -16,7 +16,7 @@ jobs:
     steps:
       - setup_remote_docker
       - attach_workspace:
-        at: .
+          at: .
       - run: |
           docker login -u $DOCKER_USER -p $DOCKER_PASS
           docker build -tag=docker-test .
