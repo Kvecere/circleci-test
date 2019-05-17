@@ -14,25 +14,28 @@ jobs:
     docker:
       - image: circleci/node
     steps:
-      - checkout
-      - run: yarn start
-      - persist_to_workspace:
-          root: .
-          paths:
-            - ./*
+      - attach_workspace:
+        at: .
+      - setup_remote_docker
+      - run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASS
+          docker build -tag=docker-test .
+      - run: |
+          docker run -d --docker-test
+          docker push docker-test
   # push-image:
-  #   docker:
-  #     - image: circleci/node
-  #   steps:
-  #     - attach_workspace:
-  #       at: .
-      # - setup_remote_docker
-      # - run: |
-      #     docker login -u $DOCKER_USER -p $DOCKER_PASS
-      #     docker build -tag=docker-test .
-      # - run: |
-      #     docker run -d --docker-test
-      #     docker push docker-test
+    # docker:
+    #   - image: circleci/node
+    # steps:
+    #   - attach_workspace:
+    #     at: .
+    #   - setup_remote_docker
+    #   - run: |
+    #       docker login -u $DOCKER_USER -p $DOCKER_PASS
+    #       docker build -tag=docker-test .
+    #   - run: |
+    #       docker run -d --docker-test
+    #       docker push docker-test
 workflows:
   version: 2.1
   build_and_test:
