@@ -22,6 +22,7 @@ jobs:
           docker build -t=docker-test .
       - run: |
           docker run -d docker-test
+          docker tag docker-test registry-1.docker.io/kdvecere/test
           docker push kdvecere/test:docker-test
   # push-image:
     # docker:
