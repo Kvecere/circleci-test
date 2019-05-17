@@ -19,7 +19,7 @@ jobs:
           at: .
       - run: |
           docker login -u $DOCKER_USER -p $DOCKER_PASS
-          docker build -tag=docker-test .
+          docker build -t=docker-test .
       - run: |
           docker run -d --docker-test
           docker push docker-test
