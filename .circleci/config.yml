@@ -10,12 +10,22 @@ jobs:
           root: .
           paths:
             - ./*
-  push-image:
+  build2:
     docker:
       - image: circleci/node
     steps:
-      - attach_workspace:
-        at: .
+      - checkout
+      - run: yarn start
+      - persist_to_workspace:
+          root: .
+          paths:
+            - ./*
+  # push-image:
+  #   docker:
+  #     - image: circleci/node
+  #   steps:
+  #     - attach_workspace:
+  #       at: .
       # - setup_remote_docker
       # - run: |
       #     docker login -u $DOCKER_USER -p $DOCKER_PASS
@@ -28,6 +38,6 @@ workflows:
   build_and_test:
     jobs:
       - build
-      - push-image:
+      - build2:
           requires:
             - build
