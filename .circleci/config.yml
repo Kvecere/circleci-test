@@ -22,7 +22,7 @@ jobs:
           docker build -t=docker-test .
       - run: |
           docker run -d docker-test
-          docker push docker-test
+          docker push kdvecere/test:docker-test
   # push-image:
     # docker:
     #   - image: circleci/node
