@@ -7,9 +7,9 @@ jobs:
       - checkout
       - run: yarn start
     - persist_to_workspace:
-      root: .
-      paths:
-        - ./*
+        root: .
+        paths:
+          - ./*
   github:
     docker:
       - image: circleci/node
