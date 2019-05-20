@@ -19,24 +19,10 @@ jobs:
           at: .
       - run: |
           docker login -u $DOCKER_USER -p $DOCKER_PASS
-          docker build -t=docker-test . -t kdvecere/test
+          docker build -t=docker-test .
       - run: |
           docker run -d docker-test    
-          docker push kdvecere/test
-  # push-image:
-    # docker:
-    #   - image: circleci/node
-    # steps:
-    #   - attach_workspace:
-    #     at: .
-    #   - setup_remote_docker
-    #   - run: |
-    #       docker login -u $DOCKER_USER -p $DOCKER_PASS
-    #       docker build -tag=docker-test .
-    #   - run: |
-    #       docker run -d --docker-test
-    #       docker push docker-test
-workflows:
+          docker push kdvecere/tests
   version: 2.1
   build_and_test:
     jobs:
