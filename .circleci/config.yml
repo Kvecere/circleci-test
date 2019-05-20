@@ -23,6 +23,7 @@ jobs:
       - run: |
           docker run -d docker-test    
           docker push kdvecere/test:docker-test
+workflows:
   version: 2.1
   build_and_test:
     jobs:
